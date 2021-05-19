@@ -1,9 +1,7 @@
 # nest-custom-logger
 
----
 ## Usage
 
----
 ### Simple usage
 ```ts
 import { Logger } from '@opengeekslab_llc/nest-custom-logger';
@@ -11,7 +9,7 @@ import { Logger } from '@opengeekslab_llc/nest-custom-logger';
 const logger = new Logger(!process.env.NODE_ENV)('Hello');
 logger.log('World')
 ```
----
+
 ### Extended usage
 ```ts
 import { NestFactory } from '@nestjs/core';

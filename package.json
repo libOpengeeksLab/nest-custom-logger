@@ -1,8 +1,8 @@
 {
   "name": "@opengeekslab_llc/nest-custom-logger",
   "version": "0.2.1",
-  "description": "Logger that throw to output json logs",
-  "main": "src/index.ts",
+  "description": "Logger that prints to output json logs",
+  "main": "index.ts",
   "files": [
     "dist"
   ],
@@ -36,6 +36,8 @@
     "nest",
     "logger",
     "ts",
-    "aws"
+    "aws",
+    "nestjs",
+    "nestjs logger"
   ]
 }
