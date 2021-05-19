@@ -1,6 +1,6 @@
 {
   "name": "nest-custom-logger",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Logger that throw to output json logs",
   "main": "index.ts",
   "scripts": {
