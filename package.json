@@ -1,9 +1,14 @@
 {
   "name": "@opengeekslab_llc/nest-custom-logger",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Logger that prints to output json logs",
   "main": "index.js",
-  "files": ["dist", "index.js", "index.ts", "index.d.ts"],
+  "files": [
+    "dist",
+    "index.js",
+    "index.ts",
+    "index.d.ts"
+  ],
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.json",
     "clean": "tsc --build --clean"
