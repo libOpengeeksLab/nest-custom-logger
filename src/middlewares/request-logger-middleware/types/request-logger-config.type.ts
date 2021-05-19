@@ -1,4 +1,3 @@
-import { WriteLogDataType } from "./write-log-data.type";
 import { WriteLogType } from "./write-log.type";
 
 export type RequestLoggerConfigType = {

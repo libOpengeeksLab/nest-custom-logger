@@ -2,8 +2,9 @@ import * as  _ from 'lodash';
 import writeHttpLog from './write-http-log';
 import { RequestLoggerConfigType } from "./types/request-logger-config.type";
 import { WriteLogDataType } from "./types/write-log-data.type";
+import { RequestHandler } from "@nestjs/common/interfaces";
 
-function requestLoggerMiddleware(config: RequestLoggerConfigType): (req, res, next) => void {
+function requestLoggerMiddleware(config: RequestLoggerConfigType): RequestHandler {
   const {
     regexs,
     urlsWithDisabledLogs,
@@ -20,24 +21,26 @@ function requestLoggerMiddleware(config: RequestLoggerConfigType): (req, res, ne
    * @param res
    * @param next
    */
-  const requestLogger = (req, res, next) => {
+  const requestLogger: RequestHandler = (req, res, next) => {
     const { method, originalUrl } = req;
     const start = Date.now();
     const clientIp = _.get(req, 'headers.x-real-ip') || _.get(req, 'headers.x-forwarded-for') || _.get(req, 'connection.remoteAddress');
 
     if (_.some(regexs, (x) => originalUrl.match(x))) {
-      return next();
+      return _.isFunction(next) ? next() : next;
     }
 
     if (urlsWithDisabledLogs === true || _.some(urlsWithDisabledLogs, (x) => originalUrl === x)) {
-      return next();
+      return _.isFunction(next) ? next() : next;
     }
+
+    const requestData = _.isNil(dataToPickFromRequest) ? req : _.pick(res, dataToPickFromRequest)
 
     const data: WriteLogDataType = {
       clientIp,
       method,
       originalUrl,
-      ..._.pick(req, dataToPickFromRequest),
+      ...requestData,
     };
 
     if (
@@ -54,11 +57,14 @@ function requestLoggerMiddleware(config: RequestLoggerConfigType): (req, res, ne
       const responseTime = Date.now() - start;
 
       const log = `${clientIp} - ${method} ${originalUrl} - ${statusCode} [${statusMessage}] (${contentSize}b sent in ${responseTime} ms)`;
+
+      const responseData = _.isNil(dataToPickFromResponse) ? res : _.pick(res, dataToPickFromResponse)
+
       writeLog(
         log,
         {
           ...data,
-          ..._.pick(res, dataToPickFromResponse),
+          ...responseData,
           statusCode,
           statusMessage,
           contentSize,
@@ -67,7 +73,7 @@ function requestLoggerMiddleware(config: RequestLoggerConfigType): (req, res, ne
       );
     });
 
-    return next();
+    return _.isFunction(next) ? next() : next;
   };
 
   return requestLogger;
