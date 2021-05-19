@@ -1,6 +1,6 @@
 {
   "name": "@opengeekslab_llc/nest-custom-logger",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Logger that prints to output json logs",
   "main": "index.js",
   "files": [
@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.json",
+    "publish": "yarn build && npm publish",
     "clean": "tsc --build --clean"
   },
   "repository": {
