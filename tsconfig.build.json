@@ -2,9 +2,9 @@
   "extends": "./tsconfig.json",
   "include": [
     "src/**/*",
+    "../index.ts"
   ],
   "compilerOptions": {
     "esModuleInterop": true
   }
 }
-

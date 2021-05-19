@@ -10,6 +10,7 @@
     "target": "es6",
     "sourceMap": false,
     "outDir": "./dist",
+    "rootDir": "./src",
     "skipLibCheck": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
