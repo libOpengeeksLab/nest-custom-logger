@@ -10,7 +10,7 @@
     "experimentalDecorators": true,
     "sourceMap": false,
     "outDir": "./dist",
-    "rootDir": "./lib",
+    "rootDir": "./src",
     "skipLibCheck": true
   },
   "include": [

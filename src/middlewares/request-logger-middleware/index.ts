@@ -34,7 +34,7 @@ function requestLoggerMiddleware(config: RequestLoggerConfigType): RequestHandle
       return _.isFunction(next) ? next() : next;
     }
 
-    const requestData = _.isNil(dataToPickFromRequest) ? req : _.pick(res, dataToPickFromRequest)
+    const requestData = _.isNil(dataToPickFromRequest) ? { } : _.pick(res, dataToPickFromRequest)
 
     const data: WriteLogDataType = {
       clientIp,
@@ -58,7 +58,7 @@ function requestLoggerMiddleware(config: RequestLoggerConfigType): RequestHandle
 
       const log = `${clientIp} - ${method} ${originalUrl} - ${statusCode} [${statusMessage}] (${contentSize}b sent in ${responseTime} ms)`;
 
-      const responseData = _.isNil(dataToPickFromResponse) ? res : _.pick(res, dataToPickFromResponse)
+      const responseData = _.isNil(dataToPickFromResponse) ? { } : _.pick(res, dataToPickFromResponse)
 
       writeLog(
         log,
