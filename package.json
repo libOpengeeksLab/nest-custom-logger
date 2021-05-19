@@ -1,6 +1,6 @@
 {
   "name": "@opengeekslab_llc/nest-custom-logger",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Logger that prints to output json logs",
   "main": "index.ts",
   "files": [
