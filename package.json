@@ -1,10 +1,14 @@
 {
-  "name": "nest-custom-logger",
+  "name": "@opengeekslab_llc/nest-custom-logger",
   "version": "0.1.2",
   "description": "Logger that throw to output json logs",
-  "main": "index.ts",
+  "main": "src/index.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --build",
+    "clean": "tsc --build --clean"
   },
   "repository": {
     "type": "git",
@@ -22,6 +26,15 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.169",
-    "@types/node": "^15.3.0"
-  }
+    "@types/node": "^15.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb": "^18.2.1"
+  },
+  "keywords": [
+    "nest",
+    "logger",
+    "ts",
+    "aws"
+  ]
 }

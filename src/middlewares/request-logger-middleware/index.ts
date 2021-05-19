@@ -1,83 +1,9 @@
-/* eslint-disable */
-/* tslint-disable */
 import * as  _ from 'lodash';
+import writeHttpLog from './write-http-log';
+import { RequestLoggerConfigType } from "./types/request-logger-config.type";
+import { WriteLogDataType } from "./types/write-log-data.type";
 
-const writeHttpLog = (log) => {
-  const timeStamp = new Date().toISOString();
-  const level = 'http';
-
-  const message = `[${timeStamp}] [\x1b[33m${level}\x1b[0m]\x1b[33m - ${log}\x1b[0m`;
-
-  console.log(message);
-};
-
-interface WriteLogData {
-  clientIp?: string;
-  method?: string;
-  originalUrl?: string;
-  statusCode?: number;
-  statusMessage?: string;
-  contentSize?: number;
-  responseTime?: number;
-
-  [key: string]: unknown;
-}
-
-interface RequestLoggerConfig {
-  /**
-   * Provide an ability to exclude logs
-   *
-   * @type {RegExp[]}
-   */
-  regexs?: RegExp[]
-
-  /**
-   * Provide an ability to exclude logs by urls
-   *
-   * @type {String[]}
-   *
-   * if true will apply for all logs
-   */
-  urlsWithDisabledLogs?: string[] | true
-
-  /**
-   * Provide an ability to show logs on start of request
-   *
-   * @type {String[]}
-   *
-   * if true will apply for all logs
-   */
-  urlsThatIsShowedOnStart?: string[] | true
-
-  /**
-   * Provide an ability to pick additional data from request
-   *
-   * @type {String[]}
-   *
-   * lodash method is using
-   */
-  dataToPickFromRequest?: string[],
-
-  /**
-   * Provide an ability to pick additional data from response
-   *
-   * @type {String[]}
-   *
-   * lodash method is using
-   */
-  dataToPickFromResponse?: string[],
-
-  /**
-   * Function to create custom log output
-   *
-   * @param logMessage: formatted log
-   * @param {WriteLogData} data: values for logging
-   */
-  writeLog?: (logMessage: string, data: WriteLogData) => void
-}
-
-function RequestLogger(config: RequestLoggerConfig): (req, res, next) => void {
-
+function requestLoggerMiddleware(config: RequestLoggerConfigType): (req, res, next) => void {
   const {
     regexs,
     urlsWithDisabledLogs,
@@ -107,7 +33,7 @@ function RequestLogger(config: RequestLoggerConfig): (req, res, next) => void {
       return next();
     }
 
-    const data: WriteLogData = {
+    const data: WriteLogDataType = {
       clientIp,
       method,
       originalUrl,
@@ -147,5 +73,4 @@ function RequestLogger(config: RequestLoggerConfig): (req, res, next) => void {
   return requestLogger;
 }
 
-export default RequestLogger;
-export { writeHttpLog }
+export default requestLoggerMiddleware;

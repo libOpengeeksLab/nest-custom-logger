@@ -1,15 +1,6 @@
-/* eslint-disable */
-/* tslint-disable */
-import { Logger as NestLogger } from '@nestjs/common';
-import { writeHttpLog } from './requestLogger';
+import ExtendedLogger from "../extended-logger";
 
-class Logger extends NestLogger {
-  http(message, data?: { [key: string]: any }, context?: string) {
-    writeHttpLog(message);
-  }
-}
-
-class CustomLogger extends Logger {
+class JsonLogger extends ExtendedLogger {
   error(message: any, trace?: string, context?: string): void {
     console.error(JSON.stringify({
       type: 'error',
@@ -61,4 +52,4 @@ class CustomLogger extends Logger {
   }
 }
 
-export { Logger, CustomLogger };
+export default JsonLogger;
