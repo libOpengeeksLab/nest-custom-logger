@@ -1,29 +1,18 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "CommonJS",
+    "target": "ES2018",
     "declaration": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "removeComments": true,
     "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es6",
     "sourceMap": false,
     "outDir": "./dist",
     "rootDir": "./src",
-    "skipLibCheck": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "moduleResolution": "node",
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "emitDeclarationOnly": true,
-    "noEmitOnError": true,
-  }
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*", "../index.ts"],
+  "exclude": ["node_modules"]
 }
