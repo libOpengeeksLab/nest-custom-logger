@@ -1,8 +1,8 @@
 import * as  _ from 'lodash';
-import writeHttpLog from './write-http-log';
 import { RequestLoggerConfigType } from "./types/request-logger-config.type";
 import { WriteLogDataType } from "./types/write-log-data.type";
 import { RequestHandler } from "@nestjs/common/interfaces";
+import { writeHttpLog } from "../../utils";
 
 function requestLoggerMiddleware(config: RequestLoggerConfigType): RequestHandler {
   const {

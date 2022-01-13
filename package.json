@@ -1,6 +1,6 @@
 {
   "name": "@opengeekslab_llc/nest-custom-logger",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Logger that prints to output json logs",
   "main": "index.js",
   "files": [
@@ -24,9 +24,9 @@
   },
   "homepage": "https://github.com/libOpengeeksLab/nest-custom-logger#readme",
   "dependencies": {
-    "@nestjs/common": "^7.6.17",
+    "@nestjs/common": "^8.2.5",
     "lodash": "^4.17.21",
-    "rxjs": "^6.4.0"
+    "rxjs": "^7.5.2"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.169",

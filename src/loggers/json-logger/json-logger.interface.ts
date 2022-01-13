@@ -11,5 +11,7 @@ export default interface JsonLoggerInterface extends ExtendedLoggerInterface {
 
   verbose(message: string | number | boolean | object, context?: string): void;
 
+  db(message: string | number | boolean | object, context?: string): void;
+
   http(message: string, data?: Record<string, unknown>, context?: string): void;
 }
