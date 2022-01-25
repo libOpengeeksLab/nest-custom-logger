@@ -1,7 +1,7 @@
 import ExtendedLogger from "../extended-logger";
-import JsonLoggerInterface from "./json-logger.interface";
+import LoggerInterface from "../logger/logger.interface";
 
-class JsonLogger extends ExtendedLogger implements JsonLoggerInterface {
+class JsonLogger extends ExtendedLogger implements LoggerInterface {
   error(message: string | number | boolean | object, trace?: string, context?: string): void {
     console.error(JSON.stringify({
       type: 'error',

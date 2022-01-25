@@ -79,4 +79,4 @@ function requestLoggerMiddleware(config: RequestLoggerConfigType): RequestHandle
   return requestLogger;
 }
 
-export default requestLoggerMiddleware;
+export { requestLoggerMiddleware };

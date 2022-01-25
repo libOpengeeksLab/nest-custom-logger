@@ -1,8 +1,8 @@
-import { Logger as NestLogger } from '@nestjs/common';
-import ExtendedLoggerInterface from "./extended-logger.interface";
+import { ConsoleLogger } from '@nestjs/common';
 import { writeDbLog, writeHttpLog } from "../../utils";
+import LoggerInterface from "../logger/logger.interface";
 
-class ExtendedLogger extends NestLogger implements ExtendedLoggerInterface {
+class ExtendedLogger extends ConsoleLogger implements LoggerInterface {
   http(message: string) {
     writeHttpLog(message);
   }

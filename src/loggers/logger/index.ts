@@ -8,4 +8,4 @@ function Logger(isDevelopment: boolean): typeof ExtendedLogger | typeof JsonLogg
   return isDevelopment === false ? JsonLogger : ExtendedLogger;
 }
 
-export default Logger;
+export { Logger };
